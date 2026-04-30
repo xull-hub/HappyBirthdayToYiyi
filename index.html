@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐视频</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 生日快乐装饰 */
+        .birthday-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 2em;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .cake {
+            position: absolute;
+            font-size: 1.5em;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .gift {
+            position: absolute;
+            font-size: 1.8em;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .star {
+            position: absolute;
+            font-size: 1.2em;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 视频容器 */
+        .video-container {
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+        }
+
+        video {
+            display: block;
+            width: 80vw;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* 中心标题 */
+        .center-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            text-align: center;
+            color: #fff;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.8); }
+        }
+
+        /* 随机位置生成 */
+        .balloon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .balloon:nth-child(2) { top: 15%; right: 8%; animation-delay: 1s; }
+        .balloon:nth-child(3) { bottom: 20%; left: 12%; animation-delay: 2s; }
+        .balloon:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 3s; }
+        .balloon:nth-child(5) { top: 25%; left: 20%; animation-delay: 4s; }
+        .balloon:nth-child(6) { top: 30%; right: 25%; animation-delay: 5s; }
+        .balloon:nth-child(7) { bottom: 30%; left: 25%; animation-delay: 6s; }
+        .balloon:nth-child(8) { bottom: 25%; right: 20%; animation-delay: 7s; }
+
+        .cake:nth-child(9) { top: 5%; left: 35%; animation-delay: 0.5s; }
+        .cake:nth-child(10) { top: 8%; right: 35%; animation-delay: 1.5s; }
+        .cake:nth-child(11) { bottom: 10%; left: 40%; animation-delay: 2.5s; }
+        .cake:nth-child(12) { bottom: 12%; right: 40%; animation-delay: 3.5s; }
+
+        .gift:nth-child(13) { top: 40%; left: 2%; animation-delay: 1s; }
+        .gift:nth-child(14) { top: 45%; right: 2%; animation-delay: 3s; }
+        .gift:nth-child(15) { bottom: 40%; left: 3%; animation-delay: 5s; }
+        .gift:nth-child(16) { bottom: 45%; right: 3%; animation-delay: 7s; }
+
+        .star:nth-child(17) { top: 20%; left: 45%; animation-delay: 0.2s; }
+        .star:nth-child(18) { top: 35%; right: 45%; animation-delay: 1.2s; }
+        .star:nth-child(19) { bottom: 35%; left: 45%; animation-delay: 2.2s; }
+        .star:nth-child(20) { bottom: 20%; right: 45%; animation-delay: 3.2s; }
+    </style>
+</head>
+<body>
+    <!-- 生日快乐装饰 -->
+    <div class="birthday-decoration">
+        <!-- 气球 -->
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        
+        <!-- 蛋糕 -->
+        <div class="cake">🎂</div>
+        <div class="cake">🎂</div>
+        <div class="cake">🎂</div>
+        <div class="cake">🎂</div>
+        
+        <!-- 礼物 -->
+        <div class="gift">🎁</div>
+        <div class="gift">🎁</div>
+        <div class="gift">🎁</div>
+        <div class="gift">🎁</div>
+        
+        <!-- 星星 -->
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+    </div>
+
+    <!-- 中心标题 -->
+    <div class="center-title">
+        🎉 生日快乐 🎉
+    </div>
+
+    <!-- 视频容器 -->
+    <div class="video-container">
+        <video controls autoplay muted>
+            <source src="your-video.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
+    </div>
+
+    <script>
+        // 动态添加更多装饰元素
+        function addRandomDecorations() {
+            const decorationContainer = document.querySelector('.birthday-decoration');
+            const emojis = ['🎉', '🎊', '🥳', '🎈', '🎂', '🎁', '✨', '🌟', '💫', '🎀'];
+            
+            for (let i = 0; i < 15; i++) {
+                const decoration = document.createElement('div');
+                decoration.className = 'star';
+                decoration.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // 随机位置
+                decoration.style.top = Math.random() * 100 + '%';
+                decoration.style.left = Math.random() * 100 + '%';
+                
+                // 随机动画延迟
+                decoration.style.animationDelay = Math.random() * 8 + 's';
+                
+                decorationContainer.appendChild(decoration);
+            }
+        }
+
+        // 页面加载完成后添加装饰
+        window.addEventListener('load', function() {
+            setTimeout(addRandomDecorations, 1000);
+        });
+
+        // 视频播放控制
+        const video = document.querySelector('video');
+        video.addEventListener('play', function() {
+            this.muted = false; // 如果想让视频有声音，取消注释这行
+        });
+    </script>
+</body>
+</html>
