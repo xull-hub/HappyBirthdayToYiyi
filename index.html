@@ -174,13 +174,13 @@
 
     <!-- 中心标题 -->
     <div class="center-title">
-        🎉 生日快乐 🎉
+        🎉 一一生日快乐 🎉
     </div>
 
     <!-- 视频容器 -->
     <div class="video-container">
-        <video controls autoplay muted>
-            <source src="your-video.mp4" type="video/mp4">
+        <video controls autoplay muted playsinline>
+            <source src="./aaa.mp4" type="video/mp4">
             您的浏览器不支持视频播放。
         </video>
     </div>
@@ -212,10 +212,10 @@
             setTimeout(addRandomDecorations, 1000);
         });
 
-        // 视频播放控制
+        // 视频播放控制（移除静音以便有声音）
         const video = document.querySelector('video');
         video.addEventListener('play', function() {
-            this.muted = false; // 如果想让视频有声音，取消注释这行
+            this.muted = false;
         });
     </script>
 </body>
